@@ -1,0 +1,175 @@
+/*LOGIN*/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Nicko - Login & Sign Up</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f6fb; }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .buttons {
+      display: flex;
+      gap: 12px;
+    }
+    .button {
+      padding: 10px 24px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      outline: none;
+      font-size: 1em;
+    }
+    .button:hover {
+      background: #0056b3;
+      transform: translateY(-2px) scale(1.05);
+    }
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.5);
+      align-items: center; justify-content: center;
+    }
+    .modal-content {
+      background: #fff;
+      border-radius: 12px;
+      padding: 32px 28px 24px 28px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      width: 90%;
+      max-width: 350px;
+      position: relative;
+      animation: popIn 0.3s;
+    }
+    @keyframes popIn {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .close {
+      position: absolute;
+      right: 20px; top: 18px;
+      font-size: 1.6em;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .close:hover { color: #007bff; }
+    .modal-content h2 {
+      margin: 0 0 18px 0;
+      font-size: 1.6em;
+      color: #333;
+      text-align: center;
+    }
+    .modal-content input {
+      width: 100%;
+      padding: 10px 12px;
+      margin: 8px 0 16px 0;
+      border: 1px solid #d1d5db;
+      border-radius: 5px;
+      font-size: 1em;
+      background: #f9fafb;
+      transition: border 0.2s;
+    }
+    .modal-content input:focus {
+      border: 1.5px solid #007bff;
+      outline: none;
+    }
+    .modal-content .submit-btn {
+      width: 100%;
+      background: linear-gradient(90deg,#007bff,#0056b3);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: background 0.2s;
+    }
+    .modal-content .submit-btn:hover {
+      background: linear-gradient(90deg,#0056b3,#007bff);
+    }
+    .modal-content .switch-link {
+      display: block;
+      text-align: center;
+      margin-top: 14px;
+      color: #007bff;
+      cursor: pointer;
+      font-size: 0.97em;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Chat Nicko</h1>
+  <div class="buttons">
+    <button class="button" onclick="openModal('login')">LOG IN</button>
+    <button class="button" onclick="openModal('signup')">SIGN UP</button>
+  </div>
+</header>
+
+<!-- Login Modal -->
+<div id="login-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('login')">&times;</span>
+    <h2>Login</h2>
+    <form>
+      <input type="text" placeholder="Email or Username" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit" class="submit-btn">Log In</button>
+    </form>
+    <span class="switch-link" onclick="switchModal('login','signup')">Don't have an account? Sign Up</span>
+  </div>
+</div>
+
+<!-- Sign Up Modal -->
+<div id="signup-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('signup')">&times;</span>
+    <h2>Sign Up</h2>
+    <form>
+      <input type="text" placeholder="Email or Username" required>
+      <input type="password" placeholder="Password" required>
+      <input type="password" placeholder="Confirm Password" required>
+      <button type="submit" class="submit-btn">Sign Up</button>
+    </form>
+    <span class="switch-link" onclick="switchModal('signup','login')">Already have an account? Log In</span>
+  </div>
+</div>
+
+<script>
+  function openModal(type) {
+    document.getElementById(type + '-modal').style.display = 'flex';
+  }
+  function closeModal(type) {
+    document.getElementById(type + '-modal').style.display = 'none';
+  }
+  function switchModal(current, target) {
+    closeModal(current);
+    openModal(target);
+  }
+  // Close modal on outside click
+  window.onclick = function(event) {
+    ['login-modal','signup-modal'].forEach(function(id){
+      var modal = document.getElementById(id);
+      if (event.target === modal) modal.style.display = "none";
+    });
+  }
+</script>
+</body>
+</html>

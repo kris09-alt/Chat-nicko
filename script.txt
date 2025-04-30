@@ -1,0 +1,23 @@
+<script>
+  // Get elements
+  const loginBtn = document.getElementById('loginBtn');
+  const signupBtn = document.getElementById('signupBtn');
+  const loginModal = document.getElementById('loginModal');
+  const signupModal = document.getElementById('signupModal');
+  const closeLogin = document.getElementById('closeLogin');
+  const closeSignup = document.getElementById('closeSignup');
+
+  // Show modals
+  loginBtn.onclick = () => loginModal.style.display = 'flex';
+  signupBtn.onclick = () => signupModal.style.display = 'flex';
+
+  // Close modals
+  closeLogin.onclick = () => loginModal.style.display = 'none';
+  closeSignup.onclick = () => signupModal.style.display = 'none';
+
+  // Close when clicking outside modal content
+  window.onclick = function(event) {
+    if (event.target === loginModal) loginModal.style.display = 'none';
+    if (event.target === signupModal) signupModal.style.display = 'none';
+  };
+</script>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chat Nicko</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ </head>
+<body>
+  <header>
+    <h1><a href="index.html">Chat Nicko</a></h1>
+    <div class="buttons">
+      <button class="button" id="loginBtn">LOG IN</button>
+      <button class="button" id="signupBtn">SIGN UP</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Your Campus, Your Connections, Your Future</h1>
+    <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80" alt="Hero Image" />
+  </section>
+
+  <section class="section">
+    <div class="section-item">
+      <h3>Coding</h3>
+      <img src="https://www.mooc.org/hubfs/applications-of-computer-programming.jpg" alt="Coding Image" />
+    </div>
+    <div class="section-item">
+      <h3>Graphic Design</h3>
+      <img src="https://icieducation.co.uk/blog/wp-content/uploads/2023/02/graphic-designer-with-colleague-1024x686.jpg" alt="Graphic Design Image" />
+    </div>
+    <div class="section-item">
+      <h3>HTML</h3>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwfGFDXZw1-Hbhbr16nY4XzSAZs_CPFOIeLg&s" alt="HTML Image" />
+    </div>
+    <div class="section-item">
+      <h3>UI/UX Design</h3>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4GcFxzAEwvICnbb9Q_i7dZE3dM93TaU5SyA&s" alt="UI/UX Design Image" />
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Chat Nicko</p>
+  </footer>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeLogin">&times;</span>
+      <h2>Login</h2>
+      <form>
+        <input type="text" placeholder="Email or Username" required />
+        <input type="password" placeholder="Password" required />
+        <button type="submit" class="submit-btn">Log In</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Signup Modal -->
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeSignup">&times;</span>
+      <h2>Sign Up</h2>
+      <form>
+        <input type="text" placeholder="Email or Username" required />
+        <input type="password" placeholder="Password" required />
+        <input type="password" placeholder="Confirm Password" required />
+        <button type="submit" class="submit-btn">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Get elements
+    const loginBtn = document.getElementById('loginBtn');
+    const signupBtn = document.getElementById('signupBtn');
+    const loginModal = document.getElementById('loginModal');
+    const signupModal = document.getElementById('signupModal');
+    const closeLogin = document.getElementById('closeLogin');
+    const closeSignup = document.getElementById('closeSignup');
+
+    // Show modals
+    loginBtn.onclick = () => (loginModal.style.display = 'flex');
+    signupBtn.onclick = () => (signupModal.style.display = 'flex');
+
+    // Close modals
+    closeLogin.onclick = () => (loginModal.style.display = 'none');
+    closeSignup.onclick = () => (signupModal.style.display = 'none');
+
+    // Close when clicking outside modal content
+    window.onclick = function (event) {
+      if (event.target === loginModal) loginModal.style.display = 'none';
+      if (event.target === signupModal) signupModal.style.display = 'none';
+    };
+  </script>
+</body>
+</html>
